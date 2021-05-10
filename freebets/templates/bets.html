@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} NEW BETS {% endblock %}
+
+{% block content %}
+{% if new_bets %}
+{% for a in new_bets %}
+<a href="{% url 'freebets:event' a.id %}">{{a.event_name}}</a>
+{% endfor %}
+{% else %}
+    There aren't new matches today :(
+{% endif %}
+{% endblock %}
