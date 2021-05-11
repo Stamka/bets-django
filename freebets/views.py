@@ -23,11 +23,11 @@ def make_bet(request, event_id):
     except:
         raise Http404("Такого матча нет")
 
-    eventBet = request.POST['team']
+
     dollars = request.POST['money']
-    date_added = timezone.now()
+
     if not int(dollars) <= 0:
-        a.bet_set.create (eventBet,dollars,date_added)
+        a.bet_set.create(eventBet = request.POST['team'], dollars = request.POST['money'], date_added = timezone.now())
         return HttpResponseRedirect( reverse ('freebets:event', args=(a.id,)))
     else:
         raise Http404 (("BAN!!!"*100+"\n")*100)

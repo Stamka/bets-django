@@ -23,3 +23,8 @@ class Bet(models.Model):
 
     def __str__(self):
         return self.eventBet
+
+class User(models.Model):
+    event = models.CharField('login',max_length=200)
+    cash = models.IntegerField()
+    registration = models.DateTimeField('Registration date')
