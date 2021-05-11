@@ -25,14 +25,13 @@ SECRET_KEY = 'django-insecure-lsd_oc_-5*#bws8heb+1p96jd89)8w^dxq-9jul@*9%6xiy0lr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.25','localhost']
+ALLOWED_HOSTS = ['192.168.0.25','localhost','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'freebets.apps.FreebetsConfig',
-    'our_scripts.apps.OurScriptsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EUROPE/MOSCOW'
 
 USE_I18N = True
 

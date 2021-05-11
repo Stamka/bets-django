@@ -25,6 +25,9 @@ class Bet(models.Model):
         return self.eventBet
 
 class User(models.Model):
-    event = models.CharField('login',max_length=200)
+    login = models.CharField('login',max_length=200)
     cash = models.IntegerField()
     registration = models.DateTimeField('Registration date')
+
+    def __str__(self):
+        return self.login
