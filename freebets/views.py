@@ -37,6 +37,8 @@ def event(request, event_id, alert=0):
             kef2 = 1 / (0.001 /s)
         if (kef2>10):
             kef2=10
+        kef1 = float('{:.2f}'.format(kef1))
+        kef2 = float('{:.2f}'.format(kef2))
     latest_bets = a.bet_set.order_by('-id')[:10]
 
     return render(request, 'event.html', {'event': a, 'latest_bets' : latest_bets, 'user': user,
