@@ -6,16 +6,22 @@
 
 <h2>{{event.event_name}}</h2>
 <em> The match begins at: {{event.event_date}} </em>
+<h2>{{user.login}}</h2>
+<hr>
+<h3>Your balance: {{user.cash}}</h3>
+<hr>
+<a href="{% url 'freebets:index'%}"> Back to all Events </a>
+<hr>
 
 <form action="{% url 'freebets:make_bet' event.id %}" method="POST">
 
  {% csrf_token %}
- <p><input type="radio" required name="team" value="first"> first team win</p>>
- <p><input type="radio" required name="team" value="second"> second team win</p>
+ <p><input type="radio" required name="team" value="first"> first team win koef:  {{k1}} money: {{cash1}}$</p>>
+ <p><input type="radio" required name="team" value="second"> second team win koef:  {{k2}} money: {{cash2}}$</p>
  <input type="number" required placeholder="Your bet $$$:" name="money"> <br>
  <button type="submit"> Make Bet </button>
 
-</form>>
+</form>
 <hr>
 <hr>
 <b> Latest bets: </b>>

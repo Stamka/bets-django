@@ -3,6 +3,8 @@
 {% block title %} NEW BETS {% endblock %}
 
 {% block content %}
+<h2>{{user.login}} </h2>
+<h3>{{user.cash}}</h3>
 {% if new_bets %}
 {% for a in new_bets %}
 <a href="{% url 'freebets:event' a.id %}">{{a.event_name}}</a>

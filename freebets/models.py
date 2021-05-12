@@ -5,8 +5,12 @@ import datetime
 
 # Create your models here.
 class Event(models.Model):
-    event_name = models.CharField('Game name', max_length=200)
-    event_date = models.DateTimeField('Game date')
+    event_name = models.CharField('Game name', max_length=200) # название матча например зенит-спартак
+    event_date = models.DateTimeField('Game date') # дата события
+    event_result = models.IntegerField() # 1 first team win - 2 second team win 0 - pari isnt finish yet
+    # эти две переменные для расчёта коэфициента
+    cash_to_first_team = models.IntegerField() # сколько денег поставили на первую команду
+    cash_to_second_team = models.IntegerField() # на вторую команду
 
     def __str__(self):
         return self.event_name

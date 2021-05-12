@@ -6,4 +6,10 @@
 <p>There are not enough funds in the account</p>>
 <hr>
 You can deposit money from a bank card
+<form action="{% url 'freebets:feel_cash'%}" method="POST">
+
+ {% csrf_token %}
+ <input type="number" required placeholder="Enter a quality:" name="feel_money"> <br>
+ <button type="submit"> Feel your wallet </button>
+</form>
 {% endblock %}
