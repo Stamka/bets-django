@@ -40,6 +40,25 @@ def event(request, event_id, alert=0):
         kef1 = float('{:.2f}'.format(kef1))
         kef2 = float('{:.2f}'.format(kef2))
     latest_bets = a.bet_set.order_by('-id')[:10]
+    
+    if a.event_result != 0:
+        if a.event_result == 1:
+            for i in a.bet_set.all():
+                if i.eventBet == "first":
+                    if cash1 >= int(i.dollars * kef1):
+                        user.cash += int(i.dollars * kef1)
+                        user.save()
+                        a.cash_to_first_team -= int(i.dollars * kef1)
+                        a.save()
+        if a.event_result == 2:
+            for i in a.bet_set.all():
+                if i.eventBet == "second":
+                    if cash1 >= int(i.dollars * kef2):
+                        user.cash += int(i.dollars * kef2)
+                        user.save()
+                        a.cash_to_second_team -= int(i.dollars * kef1)
+                        a.save()
+                
 
     return render(request, 'event.html', {'event': a, 'latest_bets' : latest_bets, 'user': user,
                                           'k1': kef1,'k2': kef2,'cash1':cash1,'cash2': cash2 })
@@ -60,6 +79,8 @@ def make_bet(request, event_id):
 
     except:
         raise Http404("Такого матча нет")
+    #if a.event_result != 0:
+     #   raise Http404("Матч закончен")
 
     b = User.objects.get(id=1)
     dollars = request.POST['money']

@@ -12,6 +12,9 @@ class Event(models.Model):
     # эти две переменные для расчёта коэфициента
     cash_to_first_team = models.IntegerField(validators=[MinValueValidator(0)], default=0) # сколько денег поставили на первую команду
     cash_to_second_team = models.IntegerField(validators=[MinValueValidator(0)], default=0) # на вторую команду
+    if event_result != 0:
+        #user.cash = 200
+        a = 1
 
     def __str__(self):
         return self.event_name
@@ -25,6 +28,7 @@ class Bet(models.Model):
     eventBet = models.CharField('pari', max_length=200)
     dollars = models.IntegerField('bet amount',validators=[MinValueValidator(0)])
     date_added = models.DateTimeField('bet date')
+    
 
     def __str__(self):
         return self.eventBet
