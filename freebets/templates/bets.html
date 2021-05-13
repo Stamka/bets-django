@@ -8,6 +8,7 @@
 {% if new_bets %}
 {% for a in new_bets %}
 <a href="{% url 'freebets:event' a.id %}">{{a.event_name}}</a>
+<hr>
 {% endfor %}
 {% else %}
     There aren't new matches today :(
