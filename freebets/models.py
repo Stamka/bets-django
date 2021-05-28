@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import AbstractUser
 import datetime
 
 
@@ -33,10 +34,11 @@ class Bet(models.Model):
     def __str__(self):
         return self.eventBet
 
-class User(models.Model):
-    login = models.CharField('login',max_length=200)
-    cash = models.IntegerField(validators=[MinValueValidator(0)])
-    registration = models.DateTimeField('Registration date')
+class User(AbstractUser):
+    username = models.CharField('username',max_length=200, default = '', unique=True)
+    password = models.CharField('password',max_length=200, default = '')
+    cash = models.IntegerField(validators=[MinValueValidator(0)], default = 1500)
+    #registration = models.DateTimeField('Registration date', default = 0)
 
     def __str__(self):
-        return self.login
+        return self.username

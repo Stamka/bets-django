@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 
 from . import views
 print ("Ready")
@@ -9,9 +10,10 @@ urlpatterns = [
     path('<int:event_id>/', views.event, name='event'),
     path('<int:event_id>/make_bet/', views.make_bet, name='make_bet'),
     path('/no_money/', views.no_money, name='no_money'),
-    path('/feel_cash/', views.feel_cash, name='feel_cash')
+    path('/feel_cash/', views.feel_cash, name='feel_cash'),
 
-
+    #path('/login/', views.user_login, name='login'),
+    url(r'^login/$', views.user_login, name='login'),
 
 
 
